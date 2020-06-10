@@ -93,6 +93,11 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
+<<<<<<< HEAD
+=======
+<!--		Swagger Dependencies		-->
+
+>>>>>>> b575d24ee4991a3bbd07b9358631758cfb449d98
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
@@ -104,6 +109,7 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${swagger.version}</version>
 		</dependency>
+<<<<<<< HEAD
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -121,6 +127,8 @@
 <!--			<version>1.2.31</version>-->
 <!--		</dependency>-->
 
+=======
+>>>>>>> b575d24ee4991a3bbd07b9358631758cfb449d98
 	</dependencies>
 
 </project>

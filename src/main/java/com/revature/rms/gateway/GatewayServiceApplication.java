@@ -10,12 +10,19 @@ import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+<<<<<<< HEAD
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //@EnableSwagger2
+=======
+import springfox.documentation.swagger.web.UiConfiguration;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@EnableSwagger2
+>>>>>>> b575d24ee4991a3bbd07b9358631758cfb449d98
 @EnableEurekaClient
 @SpringBootApplication
 public class GatewayServiceApplication {
@@ -26,6 +33,7 @@ public class GatewayServiceApplication {
 		SpringApplication.run(GatewayServiceApplication.class, args);
 	}
 
+<<<<<<< HEAD
 //	@Autowired
 //	RouteDefinitionLocator locator;
 //
@@ -40,4 +48,11 @@ public class GatewayServiceApplication {
 //		return groups;
 //	}
 
+=======
+//	@Bean
+//	UiConfiguration uiConfig() {
+//		return new UiConfiguration("validatorUrl", "list", "alpha", "stream",
+//				UiConfiguration.Constants.DEFAULT_SUBMIT_METHODS, false, true, 60000L);
+//	}
+>>>>>>> b575d24ee4991a3bbd07b9358631758cfb449d98
 }
