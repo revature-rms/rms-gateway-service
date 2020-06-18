@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  rms-gateway-service:
+    image: rms-gateway-service
+    build: .
+    ports:
+      - 8080
