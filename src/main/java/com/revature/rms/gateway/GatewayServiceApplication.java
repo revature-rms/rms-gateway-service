@@ -15,29 +15,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.ArrayList;
 import java.util.List;
 
-//@EnableSwagger2
 @EnableEurekaClient
 @SpringBootApplication
 public class GatewayServiceApplication {
 
-//	private static final Logger LOGGER = LoggerFactory.getLogger(GatewayServiceApplication.class);
-
 	public static void main(String[] args) {
 		SpringApplication.run(GatewayServiceApplication.class, args);
 	}
-
-//	@Autowired
-//	RouteDefinitionLocator locator;
-//
-//	@Bean
-//	public List<GroupedOpenApi> apis() {
-//		List<GroupedOpenApi> groups = new ArrayList<>();
-//		List<RouteDefinition> definitions = locator.getRouteDefinitions().collectList().block();
-//		definitions.stream().filter(routeDefinition -> routeDefinition.getId().matches(".*-service")).forEach(routeDefinition -> {
-//			String name = routeDefinition.getId().replaceAll("-service", "");
-//			GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").setGroup(name).build();
-//		});
-//		return groups;
-//	}
 
 }
