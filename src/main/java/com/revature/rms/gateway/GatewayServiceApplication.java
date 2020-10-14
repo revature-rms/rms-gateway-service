@@ -58,6 +58,7 @@ public class GatewayServiceApplication {
 			public String getHostname() {
 				AmazonInfo info = getAmazonInfo();
 				final String publicHostname = info.get(AmazonInfo.MetaDataKey.publicHostname);
+				System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + publicHostname + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 				return this.isPreferIpAddress() ?
 						info.get(AmazonInfo.MetaDataKey.localIpv4) :
 						publicHostname == null ?
