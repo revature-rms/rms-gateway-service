@@ -35,71 +35,70 @@ public class GatewayServiceApplication {
 		SpringApplication.run(GatewayServiceApplication.class, args);
 	}
 
-	@Bean
-	@Profile("dev")
-	public EurekaInstanceConfigBean eurekaInstanceConfigBean(InetUtils utils) {
-
-		final int managementPort = Integer.parseInt(env.getProperty("server.port"));
-		final EurekaInstanceConfigBean instance = new EurekaInstanceConfigBean(utils) {
-
-			//needed only when Eureka server instance binds to EIP
-			@Scheduled(initialDelay = 10000L, fixedRate = 30000L)
-			public void refreshInfo() {
-				AmazonInfo newInfo = AmazonInfo.Builder.newBuilder().autoBuild("eureka");
-				if (!this.getDataCenterInfo().equals(newInfo)) {
-					((AmazonInfo) this.getDataCenterInfo()).setMetadata(newInfo.getMetadata());
-				}
-			}
-
-			private AmazonInfo getAmazonInfo() {
-				return (AmazonInfo) getDataCenterInfo();
-			}
-
-			@Override
-			public String getHostname() {
-				AmazonInfo info = getAmazonInfo();
-				final String publicHostname = info.get(AmazonInfo.MetaDataKey.publicHostname);
-				return this.isPreferIpAddress() ?
-						info.get(AmazonInfo.MetaDataKey.localIpv4) :
-						publicHostname == null ?
-								info.get(AmazonInfo.MetaDataKey.localHostname) : publicHostname;
-			}
-
-			@Override
-			public String getHostName(final boolean refresh) {
-				return getHostname();
-			}
-
-			@Override
-			public int getNonSecurePort() {
-				return managementPort;
-			}
-
-			@Override
-			public String getHomePageUrl() {
-				return super.getHomePageUrl();
-			}
-
-			@Override
-			public String getStatusPageUrl() {
-				String scheme = getSecurePortEnabled() ? "https" : "http";
-				return scheme + "://" + getHostname() + ":"
-						+ managementPort + getStatusPageUrlPath();
-			}
-
-			@Override
-			public String getHealthCheckUrl() {
-				String scheme = getSecurePortEnabled() ? "https" : "http";
-				return scheme + "://" + getHostname() + ":"
-						+ managementPort + getHealthCheckUrlPath();
-			}
-		};
-
-		AmazonInfo info = AmazonInfo.Builder.newBuilder().autoBuild("cloudconfig");
-		instance.setDataCenterInfo(info);
-
-		return instance;
-	}
+//	@Bean
+//	@Profile("dev")
+//	public EurekaInstanceConfigBean eurekaInstanceConfigBean(InetUtils utils) {
+//
+//		final int managementPort = Integer.parseInt(env.getProperty("server.port"));
+//		final EurekaInstanceConfigBean instance = new EurekaInstanceConfigBean(utils) {
+//
+//			@Scheduled(initialDelay = 10000L, fixedRate = 30000L)
+//			public void refreshInfo() {
+//				AmazonInfo newInfo = AmazonInfo.Builder.newBuilder().autoBuild("eureka");
+//				if (!this.getDataCenterInfo().equals(newInfo)) {
+//					((AmazonInfo) this.getDataCenterInfo()).setMetadata(newInfo.getMetadata());
+//				}
+//			}
+//
+//			private AmazonInfo getAmazonInfo() {
+//				return (AmazonInfo) getDataCenterInfo();
+//			}
+//
+//			@Override
+//			public String getHostname() {
+//				AmazonInfo info = getAmazonInfo();
+//				final String publicHostname = info.get(AmazonInfo.MetaDataKey.publicHostname);
+//				return this.isPreferIpAddress() ?
+//						info.get(AmazonInfo.MetaDataKey.localIpv4) :
+//						publicHostname == null ?
+//								info.get(AmazonInfo.MetaDataKey.localHostname) : publicHostname;
+//			}
+//
+//			@Override
+//			public String getHostName(final boolean refresh) {
+//				return getHostname();
+//			}
+//
+//			@Override
+//			public int getNonSecurePort() {
+//				return managementPort;
+//			}
+//
+//			@Override
+//			public String getHomePageUrl() {
+//				return super.getHomePageUrl();
+//			}
+//
+//			@Override
+//			public String getStatusPageUrl() {
+//				String scheme = getSecurePortEnabled() ? "https" : "http";
+//				return scheme + "://" + getHostname() + ":"
+//						+ managementPort + getStatusPageUrlPath();
+//			}
+//
+//			@Override
+//			public String getHealthCheckUrl() {
+//				String scheme = getSecurePortEnabled() ? "https" : "http";
+//				return scheme + "://" + getHostname() + ":"
+//						+ managementPort + getHealthCheckUrlPath();
+//			}
+//		};
+//
+//		AmazonInfo info = AmazonInfo.Builder.newBuilder().autoBuild("cloudconfig");
+//		instance.setDataCenterInfo(info);
+//
+//		return instance;
+//	}
 
 
 }
