@@ -56,12 +56,13 @@ public class GatewayServiceApplication {
 
 			@Override
 			public String getHostname() {
-				AmazonInfo info = getAmazonInfo();
-				final String publicHostname = info.get(AmazonInfo.MetaDataKey.publicHostname);
-				return this.isPreferIpAddress() ?
-						info.get(AmazonInfo.MetaDataKey.localIpv4) :
-						publicHostname == null ?
-								info.get(AmazonInfo.MetaDataKey.localHostname) : "gateway-service";
+				return "gateway-service";
+//				AmazonInfo info = getAmazonInfo();
+//				final String publicHostname = info.get(AmazonInfo.MetaDataKey.publicHostname);
+//				return this.isPreferIpAddress() ?
+//						info.get(AmazonInfo.MetaDataKey.localIpv4) :
+//						publicHostname == null ?
+//								info.get(AmazonInfo.MetaDataKey.localHostname) : "gateway-service";
 			}
 
 			@Override
