@@ -12,9 +12,17 @@ public class TestController {
     @Value("${FARGATE_IP}")
     private String fargateIp;
 
+    @Value("${eureka.instance.ip-address}")
+    private String instanceIp;
+
     @GetMapping
     public String getFargateIp() {
         return fargateIp;
+    }
+
+    @GetMapping("/eureka")
+    public String getInstanceIp() {
+        return instanceIp;
     }
 
 }
