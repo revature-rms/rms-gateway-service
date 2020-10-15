@@ -28,7 +28,6 @@ public class EurekaInstanceConfigBeanPostProcessor implements BeanPostProcessor 
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) {
-        LOGGER.info("EurekaInstanceConfigBeanPostProcessor - BeanPostProcessor.postProcessAfterInitialization invoked for bean with name: {}", beanName);
 
         if (bean instanceof EurekaInstanceConfigBean) {
             EurekaInstanceConfigBean instanceConfigBean = ((EurekaInstanceConfigBean) bean);
