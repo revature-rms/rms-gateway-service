@@ -30,8 +30,9 @@ public class EurekaInstanceConfigBeanPostProcessor implements BeanPostProcessor 
     public Object postProcessAfterInitialization(Object bean, String beanName) {
 
         if (bean instanceof EurekaInstanceConfigBean) {
-            EurekaInstanceConfigBean instanceConfigBean = ((EurekaInstanceConfigBean) bean);
             LOGGER.info("EurekaInstanceConfigBean detected. Setting IP address to {}", fargateIp);
+            EurekaInstanceConfigBean instanceConfigBean = ((EurekaInstanceConfigBean) bean);
+            instanceConfigBean.setInstanceId(fargateIp + ":gateway-service:8080");
             instanceConfigBean.setIpAddress(fargateIp);
             instanceConfigBean.setStatusPageUrl("http://" + fargateIp + ":8080/actuator/info");
             instanceConfigBean.setHealthCheckUrl("http://" + fargateIp + ":8080/actuator/info");
