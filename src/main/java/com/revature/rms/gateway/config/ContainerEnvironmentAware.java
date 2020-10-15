@@ -21,6 +21,7 @@ public class ContainerEnvironmentAware implements EnvironmentAware {
     public void setEnvironment(Environment environment) {
         Properties props = new Properties();
         try {
+            LOGGER.info("setting FARGATE_IP address to {}", InetAddress.getLocalHost().getHostAddress());
             props.setProperty("FARGATE_IP", InetAddress.getLocalHost().getHostAddress());
             PropertiesPropertySource propertySource = new PropertiesPropertySource("ECS", props);
             if (environment instanceof StandardEnvironment) {
