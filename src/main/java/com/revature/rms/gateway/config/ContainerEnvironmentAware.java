@@ -3,6 +3,7 @@ package com.revature.rms.gateway.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.EnvironmentAware;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.PropertiesPropertySource;
 import org.springframework.core.env.StandardEnvironment;
@@ -13,6 +14,7 @@ import java.net.UnknownHostException;
 import java.util.Properties;
 
 @Component
+@Profile("dev")
 public class ContainerEnvironmentAware implements EnvironmentAware {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ContainerEnvironmentAware.class);
